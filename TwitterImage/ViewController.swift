@@ -19,12 +19,19 @@ class ViewController: UIViewController {
         view.backgroundColor = .blue
         
         let url = URL(string: "https://api.twitter.com/oauth2/token")!
-        let parameters: [String : Any] = ["grant_type" : "client_credentials"]
-        let method = HttpMethod.post(parameters)
+        let method = HttpMethod.post("grant_type=client_credentials")
         let resource = Resource(url: url, httpMethod: method, parseJSON: convert)
         
         webService.load(resource: resource) { (result) in
-            print(result)
+            switch result {
+            case let .success(json):
+                if let token = json?["access_token"] as? String {
+                    print(token)
+                }
+                
+            default:
+                break
+            }
         }
     }
     

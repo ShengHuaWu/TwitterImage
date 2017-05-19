@@ -12,6 +12,7 @@
 		9B7821061ECC573500318374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821051ECC573500318374 /* Assets.xcassets */; };
 		9B7821091ECC573500318374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821071ECC573500318374 /* LaunchScreen.storyboard */; };
 		9B78211F1ECC5B8300318374 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B78211E1ECC5B8300318374 /* WebService.swift */; };
+		9BF50AC41ECF25D1000332C2 /* TwitterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		9B78210F1ECC573500318374 /* TwitterImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7821151ECC573500318374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B78211E1ECC5B8300318374 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				9B7821071ECC573500318374 /* LaunchScreen.storyboard */,
 				9B78210A1ECC573500318374 /* Info.plist */,
 				9B78211E1ECC5B8300318374 /* WebService.swift */,
+				9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */,
 			);
 			path = TwitterImage;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B7821091ECC573500318374 /* LaunchScreen.storyboard in Resources */,
+				9BF50AC41ECF25D1000332C2 /* TwitterInfo.plist in Resources */,
 				9B7821061ECC573500318374 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +398,7 @@
 				9B78211A1ECC573500318374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9B78211B1ECC573500318374 /* Build configuration list for PBXNativeTarget "TwitterImageTests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +407,7 @@
 				9B78211D1ECC573500318374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
