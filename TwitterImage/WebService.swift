@@ -68,46 +68,6 @@ extension URLRequest {
     }
 }
 
-// MARK: - Credentials
-fileprivate struct AppCredentials {
-    let consumerKey: String
-    let consumerSecret: String
-    
-    init() {
-        guard let path = Bundle.main.path(forResource: "TwitterInfo", ofType: "plist"),
-            let credentials = NSDictionary(contentsOfFile: path) as? [String : String],
-            let key = credentials["ConsumerKey"],
-            let secret = credentials["ConsumerSecret"] else {
-                fatalError("TwitterInfo.plist missing")
-        }
-        
-        self.consumerKey = key
-        self.consumerSecret = secret
-    }
-    
-    func base64Encoded() -> String {
-        let encodedKey = consumerKey.urlEncodedString()
-        let encodedSecret = consumerSecret.urlEncodedString()
-        let bearerTokenCredentials = "\(encodedKey):\(encodedSecret)"
-        guard let data = bearerTokenCredentials.data(using: .utf8) else {
-            return ""
-        }
-        return data.base64EncodedString(options: [])
-    }
-}
-
-// MARK: - String Extension
-extension String {
-    func urlEncodedString(_ encodeAll: Bool = false) -> String {
-        var allowedCharacterSet: CharacterSet = .urlQueryAllowed
-        allowedCharacterSet.remove(charactersIn: "\n:#/?@!$&'()*+,;=")
-        if !encodeAll {
-            allowedCharacterSet.insert(charactersIn: "[]")
-        }
-        return self.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)!
-    }
-}
-
 // MARK: - URL Session Extension
 extension URLSession {
     static var appOnlyAuth: URLSession {
