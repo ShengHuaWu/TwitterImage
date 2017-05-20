@@ -18,25 +18,14 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .blue
         
-        let url = URL(string: "https://api.twitter.com/oauth2/token")!
-        let method = HttpMethod.post("grant_type=client_credentials")
-        let resource = Resource(url: url, httpMethod: method, parseJSON: convert)
-        
-        webService.load(resource: resource) { (result) in
+        webService.load(resource: bearerToken()) { (result) in
             switch result {
-            case let .success(json):
-                if let token = json?["access_token"] as? String {
-                    print(token)
-                }
-                
-            default:
-                break
+            case .success:
+                print(UserDefaults.standard.bearerToken() ?? "Not saving")
+            case let .failure(error):
+                print(error)
             }
         }
-    }
-    
-    func convert(json: Any) -> [String : Any]? {
-        return json as? [String : Any]
     }
 }
 

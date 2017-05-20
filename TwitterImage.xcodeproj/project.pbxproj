@@ -13,6 +13,7 @@
 		9B7821091ECC573500318374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821071ECC573500318374 /* LaunchScreen.storyboard */; };
 		9B78211F1ECC5B8300318374 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B78211E1ECC5B8300318374 /* WebService.swift */; };
 		9BF50AC41ECF25D1000332C2 /* TwitterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */; };
+		9BF87C551ED01B7800C12664 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF87C541ED01B7800C12664 /* AccessToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		9B7821151ECC573500318374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B78211E1ECC5B8300318374 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterInfo.plist; sourceTree = "<group>"; };
+		9BF87C541ED01B7800C12664 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +80,12 @@
 			isa = PBXGroup;
 			children = (
 				9B7820FE1ECC573500318374 /* AppDelegate.swift */,
+				9BF87C541ED01B7800C12664 /* AccessToken.swift */,
 				9B7821001ECC573500318374 /* ViewController.swift */,
+				9B78211E1ECC5B8300318374 /* WebService.swift */,
 				9B7821051ECC573500318374 /* Assets.xcassets */,
 				9B7821071ECC573500318374 /* LaunchScreen.storyboard */,
 				9B78210A1ECC573500318374 /* Info.plist */,
-				9B78211E1ECC5B8300318374 /* WebService.swift */,
 				9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */,
 			);
 			path = TwitterImage;
@@ -202,6 +205,7 @@
 				9B78211F1ECC5B8300318374 /* WebService.swift in Sources */,
 				9B7821011ECC573500318374 /* ViewController.swift in Sources */,
 				9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */,
+				9BF87C551ED01B7800C12664 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

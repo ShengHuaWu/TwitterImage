@@ -68,25 +68,26 @@ extension URLRequest {
     }
 }
 
-// MARK: - URL Session Extension
-extension URLSession {
-    static var appOnlyAuth: URLSession {
+// MARK: - Credentials
+fileprivate struct AppCredentials {
+    let consumerKey: String
+    let consumerSecret: String
+    
+    init() {
         guard let path = Bundle.main.path(forResource: "TwitterInfo", ofType: "plist"),
             let credentials = NSDictionary(contentsOfFile: path) as? [String : String],
-            let key = credentials["ConsumeKey"],
-            let secret = credentials["SecretKey"] else {
-            fatalError("TwitterInfo.plist missing")
+            let key = credentials["ConsumerKey"],
+            let secret = credentials["ConsumerSecret"] else {
+                fatalError("TwitterInfo.plist missing")
         }
-
-        let config = URLSessionConfiguration.default
-        let basicCredentials = base64EncodedCredentials(withKey: key, secret: secret)
-        config.httpAdditionalHeaders = ["Authorization" : "Basic \(basicCredentials)", "Content-Type" : "application/x-www-form-urlencoded;charset=UTF-8"]
-        return URLSession(configuration: config)
+        
+        self.consumerKey = key
+        self.consumerSecret = secret
     }
     
-    static private func base64EncodedCredentials(withKey key: String, secret: String) -> String {
-        let encodedKey = key.urlEncodedString()
-        let encodedSecret = secret.urlEncodedString()
+    func base64Encoded() -> String {
+        let encodedKey = consumerKey.urlEncodedString()
+        let encodedSecret = consumerSecret.urlEncodedString()
         let bearerTokenCredentials = "\(encodedKey):\(encodedSecret)"
         guard let data = bearerTokenCredentials.data(using: .utf8) else {
             return ""
@@ -107,8 +108,21 @@ extension String {
     }
 }
 
+// MARK: - URL Session Extension
+extension URLSession {
+    static var appOnlyAuth: URLSession {
+        let config = URLSessionConfiguration.default
+        let credentials = AppCredentials()
+        config.httpAdditionalHeaders = [
+            "Authorization" : "Basic \(credentials.base64Encoded())",
+            "Content-Type" : "application/x-www-form-urlencoded;charset=UTF-8"
+        ]
+        return URLSession(configuration: config)
+    }
+}
+
 // MARK: - Web Service
-final class WebService: WebServiceProtocol {
+final class WebService {
     func load<T>(resource: Resource<T>, completion: @escaping (Result<T>) -> ()) {
         let request = URLRequest(resource: resource)
         URLSession.appOnlyAuth.dataTask(with: request) { (data, response, error) in
@@ -117,6 +131,7 @@ final class WebService: WebServiceProtocol {
                     completion(.failure(error))
                 }
             } else {
+                // TODO: Sanitize url response and data
                 if let data = data {
                     do {
                         let result = try resource.parser(data)
@@ -132,8 +147,4 @@ final class WebService: WebServiceProtocol {
             }
         }.resume()
     }
-}
-
-protocol WebServiceProtocol {
-    func load<T>(resource: Resource<T>, completion: @escaping (Result<T>) -> ())
 }
