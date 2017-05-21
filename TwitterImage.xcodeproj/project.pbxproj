@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B18621F1ED177E300FA0B22 /* TwitterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B18621E1ED177E300FA0B22 /* TwitterImage.swift */; };
+		9B2C8D2A1ED16FAA001DAFE2 /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C8D291ED16FAA001DAFE2 /* ResourceTests.swift */; };
 		9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7820FE1ECC573500318374 /* AppDelegate.swift */; };
 		9B7821011ECC573500318374 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7821001ECC573500318374 /* ViewController.swift */; };
 		9B7821061ECC573500318374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821051ECC573500318374 /* Assets.xcassets */; };
@@ -27,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B18621E1ED177E300FA0B22 /* TwitterImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterImage.swift; sourceTree = "<group>"; };
+		9B2C8D281ED16FAA001DAFE2 /* TwitterImageTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterImageTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		9B2C8D291ED16FAA001DAFE2 /* ResourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTests.swift; sourceTree = "<group>"; };
 		9B7820FB1ECC573500318374 /* TwitterImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7820FE1ECC573500318374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B7821001ECC573500318374 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 			children = (
 				9B7820FE1ECC573500318374 /* AppDelegate.swift */,
 				9BF87C541ED01B7800C12664 /* Credentials.swift */,
+				9B18621E1ED177E300FA0B22 /* TwitterImage.swift */,
 				9B7821001ECC573500318374 /* ViewController.swift */,
 				9B78211E1ECC5B8300318374 /* WebService.swift */,
 				9B7821051ECC573500318374 /* Assets.xcassets */,
@@ -95,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				9B7821151ECC573500318374 /* Info.plist */,
+				9B2C8D281ED16FAA001DAFE2 /* TwitterImageTests-Bridging-Header.h */,
+				9B2C8D291ED16FAA001DAFE2 /* ResourceTests.swift */,
 			);
 			path = TwitterImageTests;
 			sourceTree = "<group>";
@@ -153,6 +161,7 @@
 					};
 					9B78210E1ECC573500318374 = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 9B7820FA1ECC573500318374;
 					};
@@ -204,6 +213,7 @@
 			files = (
 				9B78211F1ECC5B8300318374 /* WebService.swift in Sources */,
 				9B7821011ECC573500318374 /* ViewController.swift in Sources */,
+				9B18621F1ED177E300FA0B22 /* TwitterImage.swift in Sources */,
 				9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */,
 				9BF87C551ED01B7800C12664 /* Credentials.swift in Sources */,
 			);
@@ -213,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B2C8D2A1ED16FAA001DAFE2 /* ResourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,10 +371,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TwitterImageTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenghuawu.TwitterImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitterImageTests/TwitterImageTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterImage.app/TwitterImage";
 			};
@@ -374,10 +388,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TwitterImageTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenghuawu.TwitterImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitterImageTests/TwitterImageTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterImage.app/TwitterImage";
 			};

@@ -79,13 +79,31 @@ extension URLSession {
         ]
         return URLSession(configuration: config)
     }
+    
+    static var bearerToken: URLSession {
+        guard let token = UserDefaults.standard.bearerToken() else {
+            return .shared
+        }
+        
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "Authorization" : "Bearer \(token)"
+        ]
+        return URLSession(configuration: config)
+    }
 }
 
 // MARK: - Web Service
 final class WebService {
+    private let session: URLSession
+    
+    init(session: URLSession) {
+        self.session = session
+    }
+    
     func load<T>(resource: Resource<T>, completion: @escaping (Result<T>) -> ()) {
         let request = URLRequest(resource: resource)
-        URLSession.appOnlyAuth.dataTask(with: request) { (data, response, error) in
+        session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 DispatchQueue.main.async {
                     completion(.failure(error))

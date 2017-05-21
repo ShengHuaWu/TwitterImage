@@ -48,11 +48,6 @@ extension String {
     }
 }
 
-// MARK: - Serialization Error
-enum SerializationError: Error {
-    case missing(String)
-}
-
 // MARK: - Obtain Bearer Token
 func bearerToken(with userDefaults: UserDefaults = UserDefaults.standard) -> Resource<Bool> {
     let url = URL(string: "https://api.twitter.com/oauth2/token")!
