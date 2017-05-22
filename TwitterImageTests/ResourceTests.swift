@@ -28,7 +28,7 @@ class ResourceTests: XCTestCase {
     }
     
     // MARK: Enabled Tests
-    func testParsingBearToken() {
+    func testParsingBearerToken() {
         let token = "123456789"
         let data = try! JSONSerialization.data(withJSONObject: ["access_token" : token], options: [])
         let resource = bearerToken(with: userDefaults)

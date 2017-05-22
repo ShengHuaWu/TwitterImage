@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B18076B1ED2824000EE4E8B /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B18076A1ED2824000EE4E8B /* ImagesViewController.swift */; };
 		9B18621F1ED177E300FA0B22 /* TwitterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B18621E1ED177E300FA0B22 /* TwitterImage.swift */; };
 		9B2C8D2A1ED16FAA001DAFE2 /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C8D291ED16FAA001DAFE2 /* ResourceTests.swift */; };
 		9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7820FE1ECC573500318374 /* AppDelegate.swift */; };
-		9B7821011ECC573500318374 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7821001ECC573500318374 /* ViewController.swift */; };
 		9B7821061ECC573500318374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821051ECC573500318374 /* Assets.xcassets */; };
 		9B7821091ECC573500318374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821071ECC573500318374 /* LaunchScreen.storyboard */; };
 		9B78211F1ECC5B8300318374 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B78211E1ECC5B8300318374 /* WebService.swift */; };
@@ -29,12 +29,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B18076A1ED2824000EE4E8B /* ImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		9B18621E1ED177E300FA0B22 /* TwitterImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterImage.swift; sourceTree = "<group>"; };
 		9B2C8D281ED16FAA001DAFE2 /* TwitterImageTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterImageTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B2C8D291ED16FAA001DAFE2 /* ResourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTests.swift; sourceTree = "<group>"; };
 		9B7820FB1ECC573500318374 /* TwitterImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7820FE1ECC573500318374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9B7821001ECC573500318374 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9B7821051ECC573500318374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B7821081ECC573500318374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B78210A1ECC573500318374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 			children = (
 				9B7820FE1ECC573500318374 /* AppDelegate.swift */,
 				9BF87C541ED01B7800C12664 /* Credentials.swift */,
+				9B18076A1ED2824000EE4E8B /* ImagesViewController.swift */,
 				9B18621E1ED177E300FA0B22 /* TwitterImage.swift */,
-				9B7821001ECC573500318374 /* ViewController.swift */,
 				9B78211E1ECC5B8300318374 /* WebService.swift */,
 				9B7821051ECC573500318374 /* Assets.xcassets */,
 				9B7821071ECC573500318374 /* LaunchScreen.storyboard */,
@@ -211,8 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B18076B1ED2824000EE4E8B /* ImagesViewController.swift in Sources */,
 				9B78211F1ECC5B8300318374 /* WebService.swift in Sources */,
-				9B7821011ECC573500318374 /* ViewController.swift in Sources */,
 				9B18621F1ED177E300FA0B22 /* TwitterImage.swift in Sources */,
 				9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */,
 				9BF87C551ED01B7800C12664 /* Credentials.swift in Sources */,
