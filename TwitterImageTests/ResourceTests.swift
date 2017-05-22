@@ -10,31 +10,16 @@ import XCTest
 @testable import TwitterImage
 
 class ResourceTests: XCTestCase {
-    // MARK: Properties
-    private var userDefaults: UserDefaults!
-    
-    // MARK: Overrider Methods
-    override func setUp() {
-        super.setUp()
-        
-        userDefaults = UserDefaults(suiteName: #file)
-        userDefaults.removePersistentDomain(forName: #file)
-    }
-    
-    override func tearDown() {
-        userDefaults = nil
-        
-        super.tearDown()
-    }
-    
     // MARK: Enabled Tests
     func testParsingBearerToken() {
+        let userDefaults = UserDefaults(suiteName: #file)!
+        userDefaults.removePersistentDomain(forName: #file)
+        
         let token = "123456789"
         let data = try! JSONSerialization.data(withJSONObject: ["access_token" : token], options: [])
-        let resource = bearerToken(with: userDefaults)
 
         do {
-            let result = try resource.parser(data)
+            let result = try bearerToken(with: userDefaults).parser(data)
             XCTAssert(result)
             XCTAssertEqual(token, userDefaults.bearerToken())
         } catch {
@@ -59,10 +44,9 @@ class ResourceTests: XCTestCase {
             "created_at" : "Sun May 21 07:23:44 +0000 2017"
             ]
         let data = try! JSONSerialization.data(withJSONObject: ["statuses" : [tweet]], options: [])
-        let resource = TwitterImage.tweets
         
         do {
-            let tweets = try resource.parser(data)
+            let tweets = try TwitterImage.tweets.parser(data)
             XCTAssertEqual(tweets.count, 1)
             XCTAssertNotNil(tweets.first)
         } catch {

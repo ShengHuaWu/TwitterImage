@@ -67,6 +67,7 @@ func bearerToken(with userDefaults: UserDefaults = UserDefaults.standard) -> Res
 extension UserDefaults {
     private static let tokenKey = "TokenKey"
     
+    @discardableResult
     func setBearerToken(_ token: String) -> Bool {
         set(token, forKey: UserDefaults.tokenKey)
         return synchronize()

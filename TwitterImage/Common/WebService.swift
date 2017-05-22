@@ -126,3 +126,9 @@ final class WebService {
         }.resume()
     }
 }
+
+protocol WebServiceProtocol {
+    func load<T>(resource: Resource<T>, completion: @escaping (Result<T>) -> ())
+}
+
+extension WebService: WebServiceProtocol {}

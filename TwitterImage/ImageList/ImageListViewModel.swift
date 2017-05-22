@@ -21,15 +21,14 @@ final class ImageListViewModel {
     // MARK: Designated Initializer
     init(callback: @escaping (ImageListState) -> ()) {
         self.callback = callback
-        self.callback(self.state)
     }
     
     // MARK: Public Methods
-    func hasBearerToken() -> Bool {
-        return UserDefaults.standard.bearerToken() != nil ? true : false
+    func hasBearerToken(in userDefaults: UserDefaults = UserDefaults.standard) -> Bool {
+        return userDefaults.bearerToken() != nil ? true : false
     }
     
-    func fetchTokenThenTweets(with webService: WebService = WebService(session: URLSession.appOnlyAuth)) {
+    func fetchTokenThenTweets(with webService: WebServiceProtocol = WebService(session: URLSession.appOnlyAuth)) {
         webService.load(resource: bearerToken()) { (result) in
             switch result {
             case .success:
@@ -41,7 +40,7 @@ final class ImageListViewModel {
         }
     }
     
-    func fetchTweets(with webService: WebService = WebService(session: URLSession.bearerToken)) {
+    func fetchTweets(with webService: WebServiceProtocol = WebService(session: URLSession.bearerToken)) {
         webService.load(resource: TwitterImage.tweets) { (result) in
             switch result {
             case let .success(tweets):
