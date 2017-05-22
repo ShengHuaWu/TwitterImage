@@ -12,7 +12,7 @@
 		9B7821061ECC573500318374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821051ECC573500318374 /* Assets.xcassets */; };
 		9B7821091ECC573500318374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821071ECC573500318374 /* LaunchScreen.storyboard */; };
 		9BF246601ED2BF4B0040CE84 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2465D1ED2BF4B0040CE84 /* Credentials.swift */; };
-		9BF246611ED2BF4B0040CE84 /* TwitterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2465E1ED2BF4B0040CE84 /* TwitterImage.swift */; };
+		9BF246611ED2BF4B0040CE84 /* ImageTweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2465E1ED2BF4B0040CE84 /* ImageTweet.swift */; };
 		9BF246621ED2BF4B0040CE84 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2465F1ED2BF4B0040CE84 /* WebService.swift */; };
 		9BF246651ED2BF610040CE84 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246641ED2BF610040CE84 /* ImageDetailViewController.swift */; };
 		9BF246691ED2BF740040CE84 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246671ED2BF740040CE84 /* ImageCell.swift */; };
@@ -44,7 +44,7 @@
 		9B78210F1ECC573500318374 /* TwitterImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7821151ECC573500318374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BF2465D1ED2BF4B0040CE84 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Credentials.swift; path = Common/Credentials.swift; sourceTree = "<group>"; };
-		9BF2465E1ED2BF4B0040CE84 /* TwitterImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterImage.swift; path = Common/TwitterImage.swift; sourceTree = "<group>"; };
+		9BF2465E1ED2BF4B0040CE84 /* ImageTweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTweet.swift; path = Common/ImageTweet.swift; sourceTree = "<group>"; };
 		9BF2465F1ED2BF4B0040CE84 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebService.swift; path = Common/WebService.swift; sourceTree = "<group>"; };
 		9BF246641ED2BF610040CE84 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageDetailViewController.swift; path = ImageDetail/ImageDetailViewController.swift; sourceTree = "<group>"; };
 		9BF246671ED2BF740040CE84 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCell.swift; path = ImageList/ImageCell.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				9BF2465D1ED2BF4B0040CE84 /* Credentials.swift */,
-				9BF2465E1ED2BF4B0040CE84 /* TwitterImage.swift */,
+				9BF2465E1ED2BF4B0040CE84 /* ImageTweet.swift */,
 				9BF2465F1ED2BF4B0040CE84 /* WebService.swift */,
 			);
 			name = Common;
@@ -252,7 +252,7 @@
 			files = (
 				9BF2466F1ED2C1110040CE84 /* ImageListViewModel.swift in Sources */,
 				9BF246601ED2BF4B0040CE84 /* Credentials.swift in Sources */,
-				9BF246611ED2BF4B0040CE84 /* TwitterImage.swift in Sources */,
+				9BF246611ED2BF4B0040CE84 /* ImageTweet.swift in Sources */,
 				9BF246621ED2BF4B0040CE84 /* WebService.swift in Sources */,
 				9BF2466A1ED2BF740040CE84 /* ImageListViewController.swift in Sources */,
 				9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */,

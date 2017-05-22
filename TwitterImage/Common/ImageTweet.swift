@@ -13,8 +13,8 @@ enum SerializationError: Error {
     case missing(String)
 }
 
-// MARK: - Twitter Image
-struct TwitterImage {
+// MARK: - Image Tweet
+struct ImageTweet {
     let twitterID: String
     let text: String
     let mediaURL: URL
@@ -26,7 +26,7 @@ struct TwitterImage {
 
 typealias JSONDictionary = [String : Any]
 
-extension TwitterImage {
+extension ImageTweet {
     init(json: JSONDictionary) throws {
         guard let twitterID = json["id_str"] as? String else {
             throw SerializationError.missing("id_str")
@@ -75,14 +75,14 @@ fileprivate extension Dictionary where Key: ExpressibleByStringLiteral, Value: A
     }
 }
 
-extension TwitterImage {
-    static let tweets = Resource(url: URL(string: "https://api.twitter.com/1.1/search/tweets.json?q=%23cook%20filter%3Aimages&include_entities=true")!) { (json) throws -> [TwitterImage] in
+extension ImageTweet {
+    static let tweets = Resource(url: URL(string: "https://api.twitter.com/1.1/search/tweets.json?q=%23cook%20filter%3Aimages&include_entities=true")!) { (json) throws -> [ImageTweet] in
         guard let dictionary = json as? JSONDictionary,
             let statuses = dictionary["statuses"] as? [JSONDictionary] else {
             throw SerializationError.missing("statuses")
         }
         
         // Not every tweet has media dictionary
-        return try statuses.filter{ $0.hasMedia() }.map(TwitterImage.init)
+        return try statuses.filter{ $0.hasMedia() }.map(ImageTweet.init)
     }
 }

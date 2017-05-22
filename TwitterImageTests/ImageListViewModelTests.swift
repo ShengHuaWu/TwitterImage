@@ -38,7 +38,7 @@ class ImageListViewModelTests: XCTestCase {
     }
     
     func testFetchTweets() {
-        let webService = MockWebService<[TwitterImage]>()
+        let webService = MockWebService<[ImageTweet]>()
         
         viewModel.fetchTweets(with: webService)
         

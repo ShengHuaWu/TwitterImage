@@ -46,7 +46,7 @@ class ResourceTests: XCTestCase {
         let data = try! JSONSerialization.data(withJSONObject: ["statuses" : [tweet]], options: [])
         
         do {
-            let tweets = try TwitterImage.tweets.parser(data)
+            let tweets = try ImageTweet.tweets.parser(data)
             XCTAssertEqual(tweets.count, 1)
             XCTAssertNotNil(tweets.first)
         } catch {

@@ -10,7 +10,7 @@ import Foundation
 
 enum ImageListState {
     case loading
-    case normal([TwitterImage])
+    case normal([ImageTweet])
     case error(Error)
 }
 

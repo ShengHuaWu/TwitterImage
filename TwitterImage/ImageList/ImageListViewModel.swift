@@ -40,7 +40,7 @@ final class ImageListViewModel {
     }
     
     func fetchTweets(with webService: WebServiceProtocol = WebService(session: URLSession.bearerToken)) {
-        webService.load(resource: TwitterImage.tweets) { (result) in
+        webService.load(resource: ImageTweet.tweets) { (result) in
             switch result {
             case let .success(tweets):
                 self.state = .normal(tweets)
