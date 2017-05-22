@@ -21,6 +21,8 @@ final class ImageListViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var loadingView = LoadingView(frame: .zero)
+    
     fileprivate var viewModel: ImageListViewModel!
     
     // MARK: View Life Cycle
@@ -36,6 +38,7 @@ final class ImageListViewController: UIViewController {
         }
         
         view.addSubview(collectionView)
+        view.addSubview(loadingView)
         
         fetchTweets()
     }
@@ -51,10 +54,14 @@ final class ImageListViewController: UIViewController {
         layout.minimumLineSpacing = margin
         
         collectionView.frame = view.bounds
+        
+        loadingView.frame = view.bounds
     }
     
     // MARK: - Private Methods
     private func fetchTweets() {
+        viewModel.startFetching()
+        
         if viewModel.hasBearerToken() {
             viewModel.fetchTweets()
         } else {
@@ -65,11 +72,16 @@ final class ImageListViewController: UIViewController {
     private func updateUI(with state: ImageListState) {
         switch state {
         case .loading:
-            // TODO: Show loading view
-            break
+            loadingView.isHidden = false
+            collectionView.isHidden = true
+            
+            loadingView.startAnimating()
         case let .error(error):
             print(error.localizedDescription)
         case .normal:
+            loadingView.isHidden = true
+            collectionView.isHidden = false
+            
             collectionView.reloadData()
         }
     }

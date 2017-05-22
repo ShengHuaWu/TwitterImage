@@ -21,6 +21,7 @@ final class ImageListViewModel {
     // MARK: Designated Initializer
     init(callback: @escaping (ImageListState) -> ()) {
         self.callback = callback
+        self.callback(state)
     }
     
     // MARK: Public Methods
@@ -48,5 +49,9 @@ final class ImageListViewModel {
                 self.state = .error(error)
             }
         }
+    }
+    
+    func startFetching() {
+        state = .loading
     }
 }
