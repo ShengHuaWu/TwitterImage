@@ -64,7 +64,7 @@ extension TwitterImage {
     }
 }
 
-extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
+fileprivate extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
     func hasMedia() -> Bool {
         guard let entities = self["entities"] as? JSONDictionary,
             let _ = entities["media"] as? [JSONDictionary] else {
