@@ -15,6 +15,7 @@
 		9B7821091ECC573500318374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821071ECC573500318374 /* LaunchScreen.storyboard */; };
 		9B78211F1ECC5B8300318374 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B78211E1ECC5B8300318374 /* WebService.swift */; };
 		9BF2465A1ED28A800040CE84 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246591ED28A800040CE84 /* ImageCell.swift */; };
+		9BF2465C1ED2B8E90040CE84 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2465B1ED2B8E90040CE84 /* ImageDetailViewController.swift */; };
 		9BF50AC41ECF25D1000332C2 /* TwitterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */; };
 		9BF87C551ED01B7800C12664 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF87C541ED01B7800C12664 /* Credentials.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		9B7821151ECC573500318374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B78211E1ECC5B8300318374 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		9BF246591ED28A800040CE84 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		9BF2465B1ED2B8E90040CE84 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterInfo.plist; sourceTree = "<group>"; };
 		9BF87C541ED01B7800C12664 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 				9B7820FE1ECC573500318374 /* AppDelegate.swift */,
 				9BF87C541ED01B7800C12664 /* Credentials.swift */,
 				9BF246591ED28A800040CE84 /* ImageCell.swift */,
+				9BF2465B1ED2B8E90040CE84 /* ImageDetailViewController.swift */,
 				9B18076A1ED2824000EE4E8B /* ImagesViewController.swift */,
 				9B18621E1ED177E300FA0B22 /* TwitterImage.swift */,
 				9B78211E1ECC5B8300318374 /* WebService.swift */,
@@ -216,6 +219,7 @@
 			files = (
 				9B18076B1ED2824000EE4E8B /* ImagesViewController.swift in Sources */,
 				9B78211F1ECC5B8300318374 /* WebService.swift in Sources */,
+				9BF2465C1ED2B8E90040CE84 /* ImageDetailViewController.swift in Sources */,
 				9B18621F1ED177E300FA0B22 /* TwitterImage.swift in Sources */,
 				9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */,
 				9BF87C551ED01B7800C12664 /* Credentials.swift in Sources */,

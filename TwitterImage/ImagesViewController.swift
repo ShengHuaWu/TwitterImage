@@ -99,6 +99,7 @@ extension ImagesViewController: UICollectionViewDataSource {
 // MARK: - Collection View Delegate
 extension ImagesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: Show large image
+        let imageDetailVC = ImageDetailViewController()
+        navigationController?.pushViewController(imageDetailVC, animated: true)
     }
 }
