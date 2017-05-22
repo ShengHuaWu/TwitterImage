@@ -27,21 +27,17 @@ final class ImageListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Twitter Images"
+        title = "Image Tweets"
         
         viewModel = ImageListViewModel { [weak self] (state) in
             guard let strongSelf = self else { return }
             
-            strongSelf.collectionView.reloadData()
+            strongSelf.updateUI(with: state)
         }
         
         view.addSubview(collectionView)
         
-        if viewModel.hasBearerToken() {
-            viewModel.fetchTweets()
-        } else {
-            viewModel.fetchTokenThenTweets()
-        }
+        fetchTweets()
     }
     
     override func viewWillLayoutSubviews() {
@@ -56,12 +52,33 @@ final class ImageListViewController: UIViewController {
         
         collectionView.frame = view.bounds
     }
+    
+    // MARK: - Private Methods
+    private func fetchTweets() {
+        if viewModel.hasBearerToken() {
+            viewModel.fetchTweets()
+        } else {
+            viewModel.fetchTokenThenTweets()
+        }
+    }
+    
+    private func updateUI(with state: ImageListState) {
+        switch state {
+        case .loading:
+            // TODO: Show loading view
+            break
+        case let .error(error):
+            print(error.localizedDescription)
+        case .normal:
+            collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - Collection View Data Source
 extension ImageListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.state.tweets.count
+        return viewModel.state.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

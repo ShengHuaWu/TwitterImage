@@ -82,7 +82,7 @@ extension URLSession {
     
     static var bearerToken: URLSession {
         guard let token = UserDefaults.standard.bearerToken() else {
-            return .shared
+            fatalError("Bearer token doesn't exist.")
         }
         
         let config = URLSessionConfiguration.default

@@ -10,7 +10,7 @@ import Foundation
 
 final class ImageListViewModel {
     // MARK: Properties
-    private(set) var state = ImageListState(tweets: []) {
+    private(set) var state: ImageListState = .normal([]) {
         didSet {
             callback(state)
         }
@@ -34,8 +34,7 @@ final class ImageListViewModel {
             case .success:
                 self.fetchTweets()
             case let .failure(error):
-                // TODO: Show error
-                print(error.localizedDescription)
+                self.state = .error(error)
             }
         }
     }
@@ -44,10 +43,9 @@ final class ImageListViewModel {
         webService.load(resource: TwitterImage.tweets) { (result) in
             switch result {
             case let .success(tweets):
-                self.state.tweets = tweets
+                self.state = .normal(tweets)
             case let .failure(error):
-                // TODO: Show error
-                print(error.localizedDescription)
+                self.state = .error(error)
             }
         }
     }

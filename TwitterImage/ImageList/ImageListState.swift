@@ -8,10 +8,24 @@
 
 import Foundation
 
-struct ImageListState {
-    var tweets: [TwitterImage]
+enum ImageListState {
+    case loading
+    case normal([TwitterImage])
+    case error(Error)
+}
+
+extension ImageListState {
+    var count: Int {
+        switch self {
+        case let .normal(tweets): return tweets.count
+        default: return 0
+        }
+    }
     
-    func userName(at indexPath: IndexPath) -> String {
-        return tweets[indexPath.row].userName
+    func userName(at indexPath: IndexPath) -> String? {
+        switch self {
+        case let .normal(tweets): return tweets[indexPath.row].userName
+        default: return nil
+        }
     }
 }
