@@ -21,7 +21,7 @@ final class ImageListViewController: UIViewController {
         return collectionView
     }()
     
-    fileprivate var tweets = [TwitterImage]()
+    fileprivate var viewModel: ImageListViewModel!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -29,12 +29,18 @@ final class ImageListViewController: UIViewController {
         
         title = "Twitter Images"
         
+        viewModel = ImageListViewModel { [weak self] (state) in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.collectionView.reloadData()
+        }
+        
         view.addSubview(collectionView)
         
-        if let _ = UserDefaults.standard.bearerToken() {
-            fetchTweets()
+        if viewModel.hasBearerToken() {
+            viewModel.fetchTweets()
         } else {
-            fetchTokenThenTweets()
+            viewModel.fetchTokenThenTweets()
         }
     }
     
@@ -50,38 +56,12 @@ final class ImageListViewController: UIViewController {
         
         collectionView.frame = view.bounds
     }
-    
-    // MARK: Private Methods
-    private func fetchTokenThenTweets() {
-        WebService(session: URLSession.appOnlyAuth).load(resource: bearerToken()) { (result) in
-            switch result {
-            case .success:
-                self.fetchTweets()
-            case let .failure(error):
-                // TODO: Show error
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func fetchTweets() {
-        WebService(session: URLSession.bearerToken).load(resource: TwitterImage.tweets) { (result) in
-            switch result {
-            case let .success(tweets):
-                self.tweets = tweets
-                self.collectionView.reloadData()
-            case let .failure(error):
-                // TODO: Show error
-                print(error.localizedDescription)
-            }
-        }
-    }
 }
 
 // MARK: - Collection View Data Source
 extension ImageListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tweets.count
+        return viewModel.state.tweets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -89,8 +69,7 @@ extension ImageListViewController: UICollectionViewDataSource {
             fatalError("Cell isn't ImageCell")
         }
 
-        let tweet = tweets[indexPath.row]
-        cell.nameLabel.text = tweet.userName
+        cell.nameLabel.text = viewModel.state.userName(at: indexPath)
         
         return cell
     }

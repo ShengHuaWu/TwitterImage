@@ -17,6 +17,8 @@
 		9BF246651ED2BF610040CE84 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246641ED2BF610040CE84 /* ImageDetailViewController.swift */; };
 		9BF246691ED2BF740040CE84 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246671ED2BF740040CE84 /* ImageCell.swift */; };
 		9BF2466A1ED2BF740040CE84 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246681ED2BF740040CE84 /* ImageListViewController.swift */; };
+		9BF2466D1ED2C0600040CE84 /* ImageListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2466C1ED2C0600040CE84 /* ImageListState.swift */; };
+		9BF2466F1ED2C1110040CE84 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2466E1ED2C1110040CE84 /* ImageListViewModel.swift */; };
 		9BF50AC41ECF25D1000332C2 /* TwitterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,8 @@
 		9BF246641ED2BF610040CE84 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageDetailViewController.swift; path = ImageDetail/ImageDetailViewController.swift; sourceTree = "<group>"; };
 		9BF246671ED2BF740040CE84 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCell.swift; path = ImageList/ImageCell.swift; sourceTree = "<group>"; };
 		9BF246681ED2BF740040CE84 /* ImageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageListViewController.swift; path = ImageList/ImageListViewController.swift; sourceTree = "<group>"; };
+		9BF2466C1ED2C0600040CE84 /* ImageListState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageListState.swift; path = ImageList/ImageListState.swift; sourceTree = "<group>"; };
+		9BF2466E1ED2C1110040CE84 /* ImageListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageListViewModel.swift; path = ImageList/ImageListViewModel.swift; sourceTree = "<group>"; };
 		9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +137,8 @@
 			children = (
 				9BF246671ED2BF740040CE84 /* ImageCell.swift */,
 				9BF246681ED2BF740040CE84 /* ImageListViewController.swift */,
+				9BF2466E1ED2C1110040CE84 /* ImageListViewModel.swift */,
+				9BF2466C1ED2C0600040CE84 /* ImageListState.swift */,
 			);
 			name = ImageList;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BF2466F1ED2C1110040CE84 /* ImageListViewModel.swift in Sources */,
 				9BF246601ED2BF4B0040CE84 /* Credentials.swift in Sources */,
 				9BF246611ED2BF4B0040CE84 /* TwitterImage.swift in Sources */,
 				9BF246621ED2BF4B0040CE84 /* WebService.swift in Sources */,
@@ -248,6 +255,7 @@
 				9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */,
 				9BF246651ED2BF610040CE84 /* ImageDetailViewController.swift in Sources */,
 				9BF246691ED2BF740040CE84 /* ImageCell.swift in Sources */,
+				9BF2466D1ED2C0600040CE84 /* ImageListState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
