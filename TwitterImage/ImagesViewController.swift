@@ -11,10 +11,10 @@ import UIKit
 // MARK: - Images View Controller
 final class ImagesViewController: UIViewController {
     // MARK: Properties
-    fileprivate lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.description())
+        collectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.description())
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -85,8 +85,12 @@ extension ImagesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.description(), for: indexPath)
-        cell.backgroundColor = .yellow
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.description(), for: indexPath) as? ImageCell else {
+            fatalError("Cell isn't ImageCell")
+        }
+
+        let tweet = tweets[indexPath.row]
+        cell.nameLabel.text = tweet.userName
         
         return cell
     }
