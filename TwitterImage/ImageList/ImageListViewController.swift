@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: - Images View Controller
-final class ImagesViewController: UIViewController {
+// MARK: - Image List View Controller
+final class ImageListViewController: UIViewController {
     // MARK: Properties
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -79,7 +79,7 @@ final class ImagesViewController: UIViewController {
 }
 
 // MARK: - Collection View Data Source
-extension ImagesViewController: UICollectionViewDataSource {
+extension ImageListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tweets.count
     }
@@ -97,7 +97,7 @@ extension ImagesViewController: UICollectionViewDataSource {
 }
 
 // MARK: - Collection View Delegate
-extension ImagesViewController: UICollectionViewDelegate {
+extension ImageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let imageDetailVC = ImageDetailViewController()
         navigationController?.pushViewController(imageDetailVC, animated: true)

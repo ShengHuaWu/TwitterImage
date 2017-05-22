@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         
-        let imagesVC = ImagesViewController()
-        let navigationController = UINavigationController(rootViewController: imagesVC)
+        let imageListVC = ImageListViewController()
+        let navigationController = UINavigationController(rootViewController: imageListVC)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
