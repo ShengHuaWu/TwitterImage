@@ -24,6 +24,7 @@ final class ImageListViewController: UIViewController {
     private lazy var loadingView = LoadingView(frame: .zero)
     var viewModel: ImageListViewModel!
     var didSelect: ((ImageTweet) -> ())?
+    var presentError: ((Error) -> ())?
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -69,10 +70,10 @@ final class ImageListViewController: UIViewController {
         case .loading:
             loadingView.isHidden = false
             collectionView.isHidden = true
-            
-            loadingView.startAnimating()
         case let .error(error):
-            print(error.localizedDescription)
+            loadingView.isHidden = true
+            
+            presentError?(error)
         case .normal:
             loadingView.isHidden = true
             collectionView.isHidden = false

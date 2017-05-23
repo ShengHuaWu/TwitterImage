@@ -11,6 +11,15 @@ import UIKit
 final class LoadingView: UIView {
     // MARK: Properties
     private lazy var spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    override var isHidden: Bool {
+        didSet {
+            if isHidden {
+                spinner.stopAnimating()
+            } else {
+                spinner.startAnimating()
+            }
+        }
+    }
     
     // MARK: Designated Initializer
     override init(frame: CGRect) {
@@ -31,10 +40,5 @@ final class LoadingView: UIView {
         
         spinner.sizeToFit()
         spinner.center = CGPoint(x: bounds.midX, y: bounds.midY)
-    }
-    
-    // MARK: Public Methods
-    func startAnimating() {
-        spinner.startAnimating()
     }
 }

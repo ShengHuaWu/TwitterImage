@@ -33,6 +33,13 @@ struct Router {
             
             navigationController.pushViewController(imageDetailVC, animated: true)
         }
+        
+        imageListViewController.presentError = { [weak viewController = imageListViewController] (error) in
+            guard let imageListVC = viewController else { return }
+            
+            let alert = UIAlertController.makeAlert(with: error)
+            imageListVC.present(alert, animated: true, completion: nil)
+        }
     }
     
     func configure(_ imageDetailViewController: ImageDetailViewController, with tweet: ImageTweet) {
