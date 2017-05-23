@@ -36,6 +36,8 @@ final class ImageProvider {
         if fileManager.fileExists(atPath: fileURL.path) {
             completion(.success(fileURL))
         } else {
+            guard !operationQueue.isSuspended else { return }
+            
             operationQueue.addOperation {
                 do {
                     let data = try Data(contentsOf: url)

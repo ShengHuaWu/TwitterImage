@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Image List View Controller
 final class ImageListViewController: UIViewController {
     // MARK: Properties
-    private lazy var collectionView: UICollectionView = {
+    fileprivate lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.description())
@@ -96,8 +96,10 @@ extension ImageListViewController: UICollectionViewDataSource {
 
         cell.nameLabel.text = viewModel.state.tweet(at: indexPath)?.userName
         viewModel.downloadImage(at: indexPath) { (url) in
-            let data = try! Data(contentsOf: url)
-            cell.imageView.image = UIImage(data: data)
+            if cell.imageView.image == nil {
+                let data = try! Data(contentsOf: url)
+                cell.imageView.image = UIImage(data: data)
+            }
         }
         
         return cell
@@ -121,9 +123,11 @@ extension ImageListViewController: UIScrollViewDelegate {
         guard !decelerate else { return }
         
         viewModel.resumeDownloadingImage()
+        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         viewModel.resumeDownloadingImage()
+        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
     }
 }

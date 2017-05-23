@@ -45,4 +45,11 @@ class ImageCell: UICollectionViewCell {
         nameLabel.frame = CGRect(x: margin, y: margin, width: width, height: height * 0.2)
         imageView.frame = CGRect(x: nameLabel.frame.minX, y: nameLabel.frame.maxY + interval, width: nameLabel.frame.width, height: height * 0.8)
     }
+    
+    // MARK: Reuse
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageView.image = nil
+    }
 }
