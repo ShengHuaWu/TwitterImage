@@ -38,16 +38,9 @@ extension State where T == [ImageTweet] {
 }
 
 extension State where T == ImageTweet {
-    var userName: String? {
+    var tweet: ImageTweet? {
         switch self {
-        case let .normal(tweet): return tweet.userName
-        default: return nil
-        }
-    }
-    
-    var text: String? {
-        switch self {
-        case let .normal(tweet): return tweet.text
+        case let .normal(tweet): return tweet
         default: return nil
         }
     }

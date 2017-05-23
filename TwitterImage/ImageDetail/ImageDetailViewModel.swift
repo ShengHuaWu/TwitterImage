@@ -16,7 +16,7 @@ final class ImageDetailViewModel {
         }
     }
     
-    let callback: (State<ImageTweet>) -> ()
+    private let callback: (State<ImageTweet>) -> ()
     
     // MARK: Designated Initializer
     init(tweet: ImageTweet, callback: @escaping (State<ImageTweet>) -> ()) {
@@ -24,5 +24,19 @@ final class ImageDetailViewModel {
         
         self.callback = callback
         self.callback(self.state)
+    }
+    
+    // MARK: Public Methods
+    func downloadImage(with imageProvider: ImageProvider = ImageProvider(), completion: @escaping (URL) -> ()) {
+        guard let tweet = state.tweet else { return }
+        
+        imageProvider.load(tweet.mediaURL, for: tweet.twitterID) { (result) in
+            switch result {
+            case let .success(url):
+                completion(url)
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }

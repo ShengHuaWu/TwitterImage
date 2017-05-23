@@ -16,7 +16,7 @@ final class ImageListViewModel {
         }
     }
     
-    let callback: (State<[ImageTweet]>) -> ()
+    private let callback: (State<[ImageTweet]>) -> ()
     
     // MARK: Designated Initializer
     init(callback: @escaping (State<[ImageTweet]>) -> ()) {

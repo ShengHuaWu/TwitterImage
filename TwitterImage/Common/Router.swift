@@ -46,8 +46,8 @@ struct Router {
         let viewModel = ImageDetailViewModel(tweet: tweet) { [weak viewController = imageDetailViewController] (state) in
             guard let imageDetailVC = viewController else { return }
             
-            imageDetailVC.title = state.userName
-            imageDetailVC.textLabel.text = state.text
+            imageDetailVC.title = state.tweet?.userName
+            imageDetailVC.textLabel.text = state.tweet?.text
         }
         imageDetailViewController.viewModel = viewModel
     }

@@ -10,16 +10,19 @@ import UIKit
 
 final class ImageDetailViewController: UIViewController {
     // MARK: Properties
-    private(set) lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .yellow
+        imageView.backgroundColor = .black
         return imageView
     }()
+    
+    private lazy var spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     private(set) lazy var textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.textColor = .white
         return label
     }()
     
@@ -30,7 +33,22 @@ final class ImageDetailViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(imageView)
+        view.addSubview(spinner)
         view.addSubview(textLabel)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        spinner.startAnimating()
+        viewModel.downloadImage { [weak self] (url) in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.spinner.stopAnimating()
+            
+            let data = try! Data(contentsOf: url)
+            strongSelf.imageView.image = UIImage(data: data)
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -39,6 +57,9 @@ final class ImageDetailViewController: UIViewController {
         let margin: CGFloat = 16.0
         
         imageView.frame = view.bounds
+        
+        spinner.sizeToFit()
+        spinner.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
         
         guard let text = textLabel.text else { return }
         

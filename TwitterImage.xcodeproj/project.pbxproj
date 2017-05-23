@@ -12,6 +12,7 @@
 		9B18BC221ED3E39300A700FA /* ImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B18BC211ED3E39300A700FA /* ImageDetailViewModel.swift */; };
 		9B2C8D2A1ED16FAA001DAFE2 /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C8D291ED16FAA001DAFE2 /* ResourceTests.swift */; };
 		9B4C93611ED410ED0097167C /* UIAlertController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C93601ED410ED0097167C /* UIAlertController+Helpers.swift */; };
+		9B4C93631ED4147D0097167C /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C93621ED4147D0097167C /* ImageProvider.swift */; };
 		9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7820FE1ECC573500318374 /* AppDelegate.swift */; };
 		9B7821061ECC573500318374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821051ECC573500318374 /* Assets.xcassets */; };
 		9B7821091ECC573500318374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7821071ECC573500318374 /* LaunchScreen.storyboard */; };
@@ -44,6 +45,7 @@
 		9B2C8D281ED16FAA001DAFE2 /* TwitterImageTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterImageTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B2C8D291ED16FAA001DAFE2 /* ResourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTests.swift; sourceTree = "<group>"; };
 		9B4C93601ED410ED0097167C /* UIAlertController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Helpers.swift"; path = "ImageList/UIAlertController+Helpers.swift"; sourceTree = "<group>"; };
+		9B4C93621ED4147D0097167C /* ImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageProvider.swift; path = Common/ImageProvider.swift; sourceTree = "<group>"; };
 		9B7820FB1ECC573500318374 /* TwitterImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7820FE1ECC573500318374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B7821051ECC573500318374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,10 +131,11 @@
 			isa = PBXGroup;
 			children = (
 				9BF2465D1ED2BF4B0040CE84 /* Credentials.swift */,
+				9B4C93621ED4147D0097167C /* ImageProvider.swift */,
 				9BF2465E1ED2BF4B0040CE84 /* ImageTweet.swift */,
+				9B18BC1F1ED3DB3D00A700FA /* Router.swift */,
 				9B18BC1D1ED3D71200A700FA /* State.swift */,
 				9BF2465F1ED2BF4B0040CE84 /* WebService.swift */,
-				9B18BC1F1ED3DB3D00A700FA /* Router.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				9B4C93611ED410ED0097167C /* UIAlertController+Helpers.swift in Sources */,
 				9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */,
 				9BF246651ED2BF610040CE84 /* ImageDetailViewController.swift in Sources */,
+				9B4C93631ED4147D0097167C /* ImageProvider.swift in Sources */,
 				9BF246691ED2BF740040CE84 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
