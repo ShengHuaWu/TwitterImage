@@ -27,6 +27,28 @@ extension State where T == [ImageTweet] {
         case let .normal(tweets): return tweets[indexPath.row].userName
         default: return nil
         }
+    }
+    
+    func tweet(at indexPath: IndexPath) -> ImageTweet? {
+        switch self {
+        case let .normal(tweets): return tweets[indexPath.row]
+        default: return nil
+        }
+    }
+}
 
+extension State where T == ImageTweet {
+    var userName: String? {
+        switch self {
+        case let .normal(tweet): return tweet.userName
+        default: return nil
+        }
+    }
+    
+    var text: String? {
+        switch self {
+        case let .normal(tweet): return tweet.text
+        default: return nil
+        }
     }
 }

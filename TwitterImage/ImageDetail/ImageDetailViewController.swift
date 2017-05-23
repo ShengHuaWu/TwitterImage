@@ -10,19 +10,20 @@ import UIKit
 
 final class ImageDetailViewController: UIViewController {
     // MARK: Properties
-    private lazy var imageView: UIImageView = {
+    private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .yellow
         return imageView
     }()
     
-    private lazy var textLabel: UILabel = {
+    private(set) lazy var textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.text = "MVVM is an augmented version of MVC architecture where we formally connect our view and controller, and move the business logic out of the controller and into the view model."
         return label
     }()
+    
+    var viewModel: ImageDetailViewModel!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {

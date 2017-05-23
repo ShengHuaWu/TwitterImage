@@ -21,7 +21,7 @@ final class ImageListViewModel {
     // MARK: Designated Initializer
     init(callback: @escaping (State<[ImageTweet]>) -> ()) {
         self.callback = callback
-        self.callback(state)
+        self.callback(self.state)
     }
     
     // MARK: Public Methods

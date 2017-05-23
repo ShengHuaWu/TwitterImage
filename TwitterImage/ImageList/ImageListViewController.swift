@@ -22,22 +22,14 @@ final class ImageListViewController: UIViewController {
     }()
     
     private lazy var loadingView = LoadingView(frame: .zero)
-    
-    fileprivate var viewModel: ImageListViewModel!
-    
-    var didSelect: ((IndexPath) -> ())?
+    var viewModel: ImageListViewModel!
+    var didSelect: ((ImageTweet) -> ())?
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Image Tweets"
-        
-        viewModel = ImageListViewModel { [weak self] (state) in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.updateUI(with: state)
-        }
         
         view.addSubview(collectionView)
         view.addSubview(loadingView)
@@ -71,7 +63,8 @@ final class ImageListViewController: UIViewController {
         }
     }
     
-    private func updateUI(with state: State<[ImageTweet]>) {
+    // MARK: Public Methods
+    func updateUI(with state: State<[ImageTweet]>) {
         switch state {
         case .loading:
             loadingView.isHidden = false
@@ -109,6 +102,6 @@ extension ImageListViewController: UICollectionViewDataSource {
 // MARK: - Collection View Delegate
 extension ImageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelect?(indexPath)
+        viewModel.state.tweet(at: indexPath).flatMap{ didSelect?($0) }
     }
 }
