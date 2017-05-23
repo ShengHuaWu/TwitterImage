@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Image Detail View Model
 final class ImageDetailViewModel {
     // MARK: Properties
     private(set) var state: State<ImageTweet> {
@@ -30,13 +31,21 @@ final class ImageDetailViewModel {
     func downloadImage(with imageProvider: ImageProvider = ImageProvider(), completion: @escaping (URL) -> ()) {
         guard let tweet = state.tweet else { return }
         
-        imageProvider.load(tweet.mediaURL, for: tweet.twitterID) { (result) in
+        imageProvider.load(tweet.largeMediaURL, for: tweet.twitterID) { (result) in
             switch result {
             case let .success(url):
                 completion(url)
             case let .failure(error):
+                // TODO: Show error
                 print(error)
             }
         }
+    }
+}
+
+// MARK: - Image Tweet Extension
+extension ImageTweet {
+    var largeMediaURL: URL {
+        return URL(string: mediaURLString + ":large")!
     }
 }

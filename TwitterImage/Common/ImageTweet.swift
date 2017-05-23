@@ -17,10 +17,10 @@ enum SerializationError: Error {
 struct ImageTweet {
     let twitterID: String
     let text: String
-    let mediaURL: URL
+    let mediaURLString: String
     let userName: String
     let userScreenName: String
-    let userProfileImageURL: URL
+    let userProfileImageURLString: String
     let createdAt: String
 }
 
@@ -56,10 +56,10 @@ extension ImageTweet {
         
         self.twitterID = twitterID
         self.text = text
-        self.mediaURL = URL(string: mediaURLString)!
+        self.mediaURLString = mediaURLString
         self.userName = userName
         self.userScreenName = userScreenName
-        self.userProfileImageURL = URL(string: userProfileImageURLString)!
+        self.userProfileImageURLString = userProfileImageURLString
         self.createdAt = createdAt
     }
 }
