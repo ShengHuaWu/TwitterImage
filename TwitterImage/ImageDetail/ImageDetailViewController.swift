@@ -13,6 +13,7 @@ final class ImageDetailViewController: UIViewController {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .black
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     

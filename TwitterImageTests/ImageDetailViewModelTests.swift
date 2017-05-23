@@ -50,6 +50,14 @@ final class MockImageProvider: ImageProviderProtocol {
         loadCallCount += 1
     }
     
+    func suspendLoading() {
+        
+    }
+    
+    func resumeLoading() {
+        
+    }
+    
     func verify(file: StaticString = #file, line: UInt = #line) {
         XCTAssertEqual(loadCallCount, 1, "call count", file: file, line: line)
     }

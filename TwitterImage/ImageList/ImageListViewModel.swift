@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Image List View Model
 final class ImageListViewModel {
     // MARK: Properties
     private(set) var state: State<[ImageTweet]> = .normal([]) {
@@ -17,9 +18,12 @@ final class ImageListViewModel {
     }
     
     private let callback: (State<[ImageTweet]>) -> ()
+    private let imageProvider: ImageProviderProtocol
     
     // MARK: Designated Initializer
-    init(callback: @escaping (State<[ImageTweet]>) -> ()) {
+    init(imageProvider: ImageProviderProtocol = ImageProvider(), callback: @escaping (State<[ImageTweet]>) -> ()) {
+        self.imageProvider = imageProvider
+        
         self.callback = callback
         self.callback(self.state)
     }
@@ -53,5 +57,33 @@ final class ImageListViewModel {
     
     func startFetching() {
         state = .loading
+    }
+    
+    func downloadImage(at indexPath: IndexPath, with completion: @escaping (URL) -> ()) {
+        guard let tweet = state.tweet(at: indexPath) else { return }
+        
+        imageProvider.load(tweet.mediaURL, for: tweet.twitterID) { (result) in
+            switch result {
+            case let .success(url):
+                completion(url)
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    func suspendDownloadingImage() {
+        imageProvider.suspendLoading()
+    }
+    
+    func resumeDownloadingImage() {
+        imageProvider.resumeLoading()
+    }
+}
+
+// MARK: - Image Tweet Extension
+extension ImageTweet {
+    var mediaURL: URL {
+        return URL(string: mediaURLString)!
     }
 }

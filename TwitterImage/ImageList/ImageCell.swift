@@ -17,7 +17,7 @@ class ImageCell: UICollectionViewCell {
     
     private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .yellow
+        imageView.backgroundColor = .black
         return imageView
     }()
     

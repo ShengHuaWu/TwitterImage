@@ -22,13 +22,6 @@ extension State where T == [ImageTweet] {
         }
     }
     
-    func userName(at indexPath: IndexPath) -> String? {
-        switch self {
-        case let .normal(tweets): return tweets[indexPath.row].userName
-        default: return nil
-        }
-    }
-    
     func tweet(at indexPath: IndexPath) -> ImageTweet? {
         switch self {
         case let .normal(tweets): return tweets[indexPath.row]

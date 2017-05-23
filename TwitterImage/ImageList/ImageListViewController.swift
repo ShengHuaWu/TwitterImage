@@ -94,7 +94,11 @@ extension ImageListViewController: UICollectionViewDataSource {
             fatalError("Cell isn't ImageCell")
         }
 
-        cell.nameLabel.text = viewModel.state.userName(at: indexPath)
+        cell.nameLabel.text = viewModel.state.tweet(at: indexPath)?.userName
+        viewModel.downloadImage(at: indexPath) { (url) in
+            let data = try! Data(contentsOf: url)
+            cell.imageView.image = UIImage(data: data)
+        }
         
         return cell
     }
@@ -104,5 +108,22 @@ extension ImageListViewController: UICollectionViewDataSource {
 extension ImageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.state.tweet(at: indexPath).flatMap{ didSelect?($0) }
+    }
+}
+
+// MARK: - Scroll View Delegate
+extension ImageListViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        viewModel.suspendDownloadingImage()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard !decelerate else { return }
+        
+        viewModel.resumeDownloadingImage()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        viewModel.resumeDownloadingImage()
     }
 }

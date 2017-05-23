@@ -52,10 +52,21 @@ final class ImageProvider {
             }
         }
     }
+    
+    func suspendLoading() {
+        operationQueue.isSuspended = true
+        operationQueue.cancelAllOperations()
+    }
+    
+    func resumeLoading() {
+        operationQueue.isSuspended = false
+    }
 }
 
 protocol ImageProviderProtocol {
     func load(_ url: URL, for identifier: String, with completion: @escaping (Result<URL>) -> ())
+    func suspendLoading()
+    func resumeLoading()
 }
 
 extension ImageProvider: ImageProviderProtocol {}

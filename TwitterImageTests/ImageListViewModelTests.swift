@@ -42,7 +42,7 @@ class ImageListViewModelTests: XCTestCase {
         
         viewModel.fetchTweets(with: webService)
         
-        webService.verify(url: URL(string: "https://api.twitter.com/1.1/search/tweets.json?q=%23cook%20filter%3Aimages&include_entities=true")!)
+        webService.verify(url: URL(string: "https://api.twitter.com/1.1/search/tweets.json?q=%23cook%20filter%3Aimages&include_entities=true&count=100")!)
     }
     
     func testFetchTokenThenTweets() {

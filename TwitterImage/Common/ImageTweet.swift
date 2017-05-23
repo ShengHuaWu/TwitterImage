@@ -76,7 +76,7 @@ fileprivate extension Dictionary where Key: ExpressibleByStringLiteral, Value: A
 }
 
 extension ImageTweet {
-    static let tweets = Resource(url: URL(string: "https://api.twitter.com/1.1/search/tweets.json?q=%23cook%20filter%3Aimages&include_entities=true")!) { (json) throws -> [ImageTweet] in
+    static let tweets = Resource(url: URL(string: "https://api.twitter.com/1.1/search/tweets.json?q=%23cook%20filter%3Aimages&include_entities=true&count=100")!) { (json) throws -> [ImageTweet] in
         guard let dictionary = json as? JSONDictionary,
             let statuses = dictionary["statuses"] as? [JSONDictionary] else {
             throw SerializationError.missing("statuses")
