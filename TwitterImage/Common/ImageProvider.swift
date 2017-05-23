@@ -8,11 +8,6 @@
 
 import Foundation
 
-// MARK: - Image Download Error
-enum ImageDownloadError: Error {
-    case notExist(URL)
-}
-
 // MARK: - Image Provider
 final class ImageProvider {
     // MARK: Properties
@@ -58,6 +53,12 @@ final class ImageProvider {
         }
     }
 }
+
+protocol ImageProviderProtocol {
+    func load(_ url: URL, for identifier: String, with completion: @escaping (Result<URL>) -> ())
+}
+
+extension ImageProvider: ImageProviderProtocol {}
 
 // MARK: - User Defaults Extension
 extension UserDefaults {

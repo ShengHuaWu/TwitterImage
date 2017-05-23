@@ -56,8 +56,8 @@ class ImageListViewModelTests: XCTestCase {
 
 // MARK: - Mock Web Service
 final class MockWebService<U>: WebServiceProtocol {
-    private(set) var loadCallCount = 0
-    private(set) var expectedResource: Resource<U>!
+    private var loadCallCount = 0
+    private var expectedResource: Resource<U>!
     
     func load<T>(resource: Resource<T>, completion: @escaping (Result<T>) -> ()) {
         loadCallCount += 1

@@ -28,7 +28,7 @@ final class ImageDetailViewModel {
     }
     
     // MARK: Public Methods
-    func downloadImage(with imageProvider: ImageProvider = ImageProvider(), completion: @escaping (URL) -> ()) {
+    func downloadImage(with imageProvider: ImageProviderProtocol = ImageProvider(), completion: @escaping (URL) -> ()) {
         guard let tweet = state.tweet else { return }
         
         state = .loading
