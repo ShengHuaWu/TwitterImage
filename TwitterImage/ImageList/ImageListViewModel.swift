@@ -10,16 +10,16 @@ import Foundation
 
 final class ImageListViewModel {
     // MARK: Properties
-    private(set) var state: ImageListState = .normal([]) {
+    private(set) var state: State<[ImageTweet]> = .normal([]) {
         didSet {
             callback(state)
         }
     }
     
-    let callback: (ImageListState) -> ()
+    let callback: (State<[ImageTweet]>) -> ()
     
     // MARK: Designated Initializer
-    init(callback: @escaping (ImageListState) -> ()) {
+    init(callback: @escaping (State<[ImageTweet]>) -> ()) {
         self.callback = callback
         self.callback(state)
     }

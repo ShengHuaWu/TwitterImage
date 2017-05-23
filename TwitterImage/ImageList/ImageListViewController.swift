@@ -69,7 +69,7 @@ final class ImageListViewController: UIViewController {
         }
     }
     
-    private func updateUI(with state: ImageListState) {
+    private func updateUI(with state: State<[ImageTweet]>) {
         switch state {
         case .loading:
             loadingView.isHidden = false
@@ -98,7 +98,8 @@ extension ImageListViewController: UICollectionViewDataSource {
             fatalError("Cell isn't ImageCell")
         }
 
-        cell.nameLabel.text = viewModel.state.userName(at: indexPath)
+        let tweet = viewModel.state.value(at: indexPath)
+        cell.nameLabel.text = tweet?.userName
         
         return cell
     }
