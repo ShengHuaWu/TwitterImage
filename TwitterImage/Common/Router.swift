@@ -46,9 +46,15 @@ struct Router {
         let viewModel = ImageDetailViewModel(tweet: tweet) { [weak viewController = imageDetailViewController] (state) in
             guard let imageDetailVC = viewController else { return }
             
-            imageDetailVC.title = state.tweet?.userName
-            imageDetailVC.textLabel.text = state.tweet?.text
+            imageDetailVC.updateUI(with: state)
         }
         imageDetailViewController.viewModel = viewModel
+        
+        imageDetailViewController.presentError = { [weak viewController = imageDetailViewController] (error) in
+            guard let imageDetailVC = viewController else { return }
+
+            let alert = UIAlertController.makeAlert(with: error)
+            imageDetailVC.present(alert, animated: true, completion: nil)
+        }
     }
 }

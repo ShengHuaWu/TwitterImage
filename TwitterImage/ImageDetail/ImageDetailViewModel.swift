@@ -31,13 +31,14 @@ final class ImageDetailViewModel {
     func downloadImage(with imageProvider: ImageProvider = ImageProvider(), completion: @escaping (URL) -> ()) {
         guard let tweet = state.tweet else { return }
         
+        state = .loading
         imageProvider.load(tweet.largeMediaURL, for: tweet.twitterID) { (result) in
             switch result {
             case let .success(url):
+                self.state = .normal(tweet)
                 completion(url)
             case let .failure(error):
-                // TODO: Show error
-                print(error)
+                self.state = .error(error)
             }
         }
     }

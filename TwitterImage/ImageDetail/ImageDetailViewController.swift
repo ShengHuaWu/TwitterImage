@@ -27,6 +27,7 @@ final class ImageDetailViewController: UIViewController {
     }()
     
     var viewModel: ImageDetailViewModel!
+    var presentError: ((Error) -> ())?
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -40,11 +41,8 @@ final class ImageDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        spinner.startAnimating()
         viewModel.downloadImage { [weak self] (url) in
             guard let strongSelf = self else { return }
-            
-            strongSelf.spinner.stopAnimating()
             
             let data = try! Data(contentsOf: url)
             strongSelf.imageView.image = UIImage(data: data)
@@ -66,5 +64,22 @@ final class ImageDetailViewController: UIViewController {
         let size = CGSize(width: view.bounds.width - margin * 2.0, height: view.bounds.height)
         let rect = text.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName : textLabel.font], context: nil)
         textLabel.frame = CGRect(x: margin, y: view.bounds.height - margin - rect.height, width: rect.width, height: rect.height)
+    }
+    
+    // MARK: Public Methods
+    func updateUI(with state: State<ImageTweet>) {
+        switch state {
+        case .loading:
+            spinner.startAnimating()
+        case let .error(error):
+            spinner.stopAnimating()
+            
+            presentError?(error)
+        case let .normal(tweet):
+            spinner.stopAnimating()
+            
+            title = tweet.userName
+            textLabel.text = tweet.text
+        }
     }
 }
