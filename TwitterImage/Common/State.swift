@@ -14,18 +14,19 @@ enum State<T> {
     case error(Error)
 }
 
-extension State where T: Collection, T.Index == Int, T.IndexDistance == Int {
+extension State where T == [ImageTweet] {
     var count: Int {
         switch self {
-        case let .normal(collection): return collection.count
+        case let .normal(tweets): return tweets.count
         default: return 0
         }
     }
     
-    func value(at indexPath: IndexPath) -> T.Iterator.Element? {
+    func userName(at indexPath: IndexPath) -> String? {
         switch self {
-        case let .normal(collection): return collection[indexPath.row]
+        case let .normal(tweets): return tweets[indexPath.row].userName
         default: return nil
         }
+
     }
 }

@@ -25,6 +25,8 @@ final class ImageListViewController: UIViewController {
     
     fileprivate var viewModel: ImageListViewModel!
     
+    var didSelect: ((IndexPath) -> ())?
+    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,8 +100,7 @@ extension ImageListViewController: UICollectionViewDataSource {
             fatalError("Cell isn't ImageCell")
         }
 
-        let tweet = viewModel.state.value(at: indexPath)
-        cell.nameLabel.text = tweet?.userName
+        cell.nameLabel.text = viewModel.state.userName(at: indexPath)
         
         return cell
     }
@@ -108,7 +109,6 @@ extension ImageListViewController: UICollectionViewDataSource {
 // MARK: - Collection View Delegate
 extension ImageListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let imageDetailVC = ImageDetailViewController()
-        navigationController?.pushViewController(imageDetailVC, animated: true)
+        didSelect?(indexPath)
     }
 }

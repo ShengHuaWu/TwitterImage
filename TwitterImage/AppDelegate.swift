@@ -10,17 +10,16 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    // MARK: Properties
     var window: UIWindow?
+    let router = Router()
 
+    // MARK: Application Delegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         
-        let imageListVC = ImageListViewController()
-        let navigationController = UINavigationController(rootViewController: imageListVC)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        router.configure(window)
         
         return true
     }

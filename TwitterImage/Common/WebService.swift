@@ -123,6 +123,8 @@ final class WebService {
                     }
                 }
             }
+            
+            self.session.finishTasksAndInvalidate()
         }.resume()
     }
 }
