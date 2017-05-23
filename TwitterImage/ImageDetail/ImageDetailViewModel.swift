@@ -32,7 +32,7 @@ final class ImageDetailViewModel {
         guard let tweet = state.tweet else { return }
         
         state = .loading
-        imageProvider.load(tweet.largeMediaURL, for: tweet.twitterID) { (result) in
+        imageProvider.load(tweet.largeMediaURL, for: tweet.twitterID + "large") { (result) in
             switch result {
             case let .success(url):
                 self.state = .normal(tweet)
