@@ -18,10 +18,15 @@ final class ImageListViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        let control = UIRefreshControl()
+        control.attributedTitle = NSAttributedString(string: "Fetching Tweets ...")
+        control.addTarget(self, action: #selector(fetchTweetsAction(sender:)), for: .valueChanged)
+        collectionView.refreshControl = control
+        
         return collectionView
     }()
     
-    private lazy var loadingView = LoadingView(frame: .zero)
     var viewModel: ImageListViewModel!
     var didSelect: ((ImageTweet) -> ())?
     var presentError: ((Error) -> ())?
@@ -33,7 +38,6 @@ final class ImageListViewController: UIViewController {
         title = "Image Tweets"
         
         view.addSubview(collectionView)
-        view.addSubview(loadingView)
         
         fetchTweets()
     }
@@ -48,12 +52,15 @@ final class ImageListViewController: UIViewController {
         layout.minimumInteritemSpacing = margin
         layout.minimumLineSpacing = margin
         
-        collectionView.frame = view.bounds
-        
-        loadingView.frame = view.bounds
+        collectionView.frame = view.bounds        
     }
     
-    // MARK: - Private Methods
+    // MARK: Actions
+    func fetchTweetsAction(sender: UIRefreshControl) {
+        fetchTweets()
+    }
+    
+    // MARK: Private Methods
     private func fetchTweets() {
         viewModel.startFetching()
         
@@ -68,16 +75,12 @@ final class ImageListViewController: UIViewController {
     func updateUI(with state: State<[ImageTweet]>) {
         switch state {
         case .loading:
-            loadingView.isHidden = false
-            collectionView.isHidden = true
+            collectionView.refreshControl?.beginRefreshing()
         case let .error(error):
-            loadingView.isHidden = true
-            
+            collectionView.refreshControl?.endRefreshing()
             presentError?(error)
         case .normal:
-            loadingView.isHidden = true
-            collectionView.isHidden = false
-            
+            collectionView.refreshControl?.endRefreshing()
             collectionView.reloadData()
         }
     }
@@ -122,12 +125,16 @@ extension ImageListViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard !decelerate else { return }
         
-        viewModel.resumeDownloadingImage()
-        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
+        if case .normal = viewModel.state {
+            viewModel.resumeDownloadingImage()
+            collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        viewModel.resumeDownloadingImage()
-        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
+        if case .normal = viewModel.state {
+            viewModel.resumeDownloadingImage()
+            collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
+        }
     }
 }

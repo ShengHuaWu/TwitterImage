@@ -25,7 +25,6 @@
 		9BF2466A1ED2BF740040CE84 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246681ED2BF740040CE84 /* ImageListViewController.swift */; };
 		9BF2466F1ED2C1110040CE84 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF2466E1ED2C1110040CE84 /* ImageListViewModel.swift */; };
 		9BF246711ED2C6DD0040CE84 /* ImageListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246701ED2C6DD0040CE84 /* ImageListViewModelTests.swift */; };
-		9BF246731ED2D3B50040CE84 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF246721ED2D3B50040CE84 /* LoadingView.swift */; };
 		9BF50AC41ECF25D1000332C2 /* TwitterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +62,6 @@
 		9BF246681ED2BF740040CE84 /* ImageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageListViewController.swift; path = ImageList/ImageListViewController.swift; sourceTree = "<group>"; };
 		9BF2466E1ED2C1110040CE84 /* ImageListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageListViewModel.swift; path = ImageList/ImageListViewModel.swift; sourceTree = "<group>"; };
 		9BF246701ED2C6DD0040CE84 /* ImageListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListViewModelTests.swift; sourceTree = "<group>"; };
-		9BF246721ED2D3B50040CE84 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = ImageList/LoadingView.swift; sourceTree = "<group>"; };
 		9BF50AC31ECF25D1000332C2 /* TwitterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,7 +157,6 @@
 				9BF246671ED2BF740040CE84 /* ImageCell.swift */,
 				9BF246681ED2BF740040CE84 /* ImageListViewController.swift */,
 				9BF2466E1ED2C1110040CE84 /* ImageListViewModel.swift */,
-				9BF246721ED2D3B50040CE84 /* LoadingView.swift */,
 			);
 			name = ImageList;
 			sourceTree = "<group>";
@@ -275,7 +272,6 @@
 				9B4C93671ED431150097167C /* UIAlertController+Helpers.swift in Sources */,
 				9BF246611ED2BF4B0040CE84 /* ImageTweet.swift in Sources */,
 				9B18BC1E1ED3D71200A700FA /* State.swift in Sources */,
-				9BF246731ED2D3B50040CE84 /* LoadingView.swift in Sources */,
 				9BF246621ED2BF4B0040CE84 /* WebService.swift in Sources */,
 				9BF2466A1ED2BF740040CE84 /* ImageListViewController.swift in Sources */,
 				9B7820FF1ECC573500318374 /* AppDelegate.swift in Sources */,
