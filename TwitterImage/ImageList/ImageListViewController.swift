@@ -99,10 +99,10 @@ extension ImageListViewController: UICollectionViewDataSource {
 
         cell.nameLabel.text = viewModel.state.tweet(at: indexPath)?.userName
         viewModel.downloadImage(at: indexPath) { (url) in
-            if cell.imageView.image == nil {
-                let data = try! Data(contentsOf: url)
-                cell.imageView.image = UIImage(data: data)
-            }
+            guard cell.imageView.image == nil else { return }
+            
+            let data = try! Data(contentsOf: url)
+            cell.imageView.image = UIImage(data: data)
         }
         
         return cell
