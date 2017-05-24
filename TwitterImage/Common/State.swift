@@ -24,7 +24,7 @@ extension State where T == [ImageTweet] {
     
     func tweet(at indexPath: IndexPath) -> ImageTweet? {
         switch self {
-        case let .normal(tweets): return tweets[indexPath.row]
+        case let .normal(tweets): return tweets[indexPath.item]
         default: return nil
         }
     }

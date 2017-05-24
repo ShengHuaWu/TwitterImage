@@ -25,7 +25,6 @@ final class ImageListViewModel {
         self.imageProvider = imageProvider
         
         self.callback = callback
-        self.callback(self.state)
     }
     
     // MARK: Public Methods

@@ -123,18 +123,16 @@ extension ImageListViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard !decelerate else { return }
+        guard !decelerate, case .normal = viewModel.state else { return }
         
-        if case .normal = viewModel.state {
-            viewModel.resumeDownloadingImage()
-            collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
-        }
+        viewModel.resumeDownloadingImage()
+        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if case .normal = viewModel.state {
-            viewModel.resumeDownloadingImage()
-            collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
-        }
+        guard case .normal = viewModel.state else { return }
+        
+        viewModel.resumeDownloadingImage()
+        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
     }
 }
