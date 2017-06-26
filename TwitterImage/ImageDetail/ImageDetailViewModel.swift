@@ -28,11 +28,11 @@ final class ImageDetailViewModel {
     }
     
     // MARK: Public Methods
-    func downloadImage(with imageProvider: ImageProviderProtocol = ImageProvider(), completion: @escaping (URL) -> ()) {
+    func downloadImage(with imageProvider: ImageProvider = ImageProvider(), completion: @escaping (URL) -> ()) {
         guard let tweet = state.tweet else { return }
         
         state = .loading
-        imageProvider.load(tweet.largeMediaURL, for: tweet.twitterID + "large") { (result) in
+        imageProvider.load(at: tweet.largeMediaURL, to: tweet.fileURL(with: "large")) { (result) in
             switch result {
             case let .success(url):
                 self.state = .normal(tweet)

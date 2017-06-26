@@ -18,10 +18,10 @@ final class ImageListViewModel {
     }
     
     private let callback: (State<[ImageTweet]>) -> ()
-    private let imageProvider: ImageProviderProtocol
+    private let imageProvider: ImageProvider
     
     // MARK: Designated Initializer
-    init(imageProvider: ImageProviderProtocol = ImageProvider(), callback: @escaping (State<[ImageTweet]>) -> ()) {
+    init(imageProvider: ImageProvider = ImageProvider(), callback: @escaping (State<[ImageTweet]>) -> ()) {
         self.imageProvider = imageProvider
         
         self.callback = callback
@@ -61,7 +61,7 @@ final class ImageListViewModel {
     func downloadImage(at indexPath: IndexPath, with completion: @escaping (URL) -> ()) {
         guard let tweet = state.tweet(at: indexPath) else { return }
         
-        imageProvider.load(tweet.mediaURL, for: tweet.twitterID) { (result) in
+        imageProvider.load(at: tweet.mediaURL, to: tweet.fileURL()) { (result) in
             switch result {
             case let .success(url):
                 completion(url)
@@ -84,5 +84,13 @@ final class ImageListViewModel {
 extension ImageTweet {
     var mediaURL: URL {
         return URL(string: mediaURLString)!
+    }
+    
+    func fileURL(with suffix: String = "", userDefaults: UserDefaults = UserDefaults.standard) -> URL {
+        guard let directoryURL = userDefaults.temporaryDirectoryURL() else {
+            fatalError("Tempoaray directory doesn'r exist.")
+        }
+        
+        return directoryURL.appendingPathComponent(twitterID + suffix)
     }
 }

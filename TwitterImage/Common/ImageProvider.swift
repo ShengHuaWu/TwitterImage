@@ -11,40 +11,31 @@ import Foundation
 // MARK: - Image Provider
 final class ImageProvider {
     // MARK: Properties
-    private let fileManager: FileManager
-    private let userDefaults: UserDefaults
     private let operationQueue = OperationQueue()
     
-    // MARK: Designated Initializer
-    init(fileManager: FileManager = FileManager.default, userDefaults: UserDefaults = UserDefaults.standard) {
-        self.fileManager = fileManager
-        self.userDefaults = userDefaults
+    // MARK: Public Methods
+    static func setUp(with fileManager: FileManager = FileManager.default, userDefaults: UserDefaults = UserDefaults.standard) {
+        guard userDefaults.temporaryDirectoryURL() == nil else { return }
         
-        if self.userDefaults.temporaryDirectoryURL() == nil {
-            let uniqueString = ProcessInfo.processInfo.globallyUniqueString
-            let directoryURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(uniqueString, isDirectory: true)
-            try! self.fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
-            self.userDefaults.setTemporaryDirectoryURL(directoryURL)
-        }
+        let uniqueString = ProcessInfo.processInfo.globallyUniqueString
+        let directoryURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(uniqueString, isDirectory: true)
+        try! fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
+        userDefaults.setTemporaryDirectoryURL(directoryURL)
     }
     
-    // MARK: Public Methods
-    func load(_ url: URL, for identifier: String, with completion: @escaping (Result<URL>) -> ()) {
-        guard let directoryURL = userDefaults.temporaryDirectoryURL() else { return }
-        
-        let fileURL = directoryURL.appendingPathComponent(identifier)
-        if fileManager.fileExists(atPath: fileURL.path) {
-            completion(.success(fileURL))
+    func load(at url: URL, to destinationURL: URL, with exist: (URL) -> Bool = { FileManager.default.fileExists(atPath: $0.path) }, completion: @escaping (Result<URL>) -> ()) {
+        if exist(destinationURL) {
+            completion(.success(destinationURL))
         } else {
             guard !operationQueue.isSuspended else { return }
             
             operationQueue.addOperation {
                 do {
                     let data = try Data(contentsOf: url)
-                    try data.write(to: fileURL, options: .atomic)
+                    try data.write(to: destinationURL, options: .atomic)
                     
                     OperationQueue.main.addOperation {
-                        completion(.success(fileURL))
+                        completion(.success(destinationURL))
                     }
                 } catch {
                     OperationQueue.main.addOperation {
@@ -64,14 +55,6 @@ final class ImageProvider {
         operationQueue.isSuspended = false
     }
 }
-
-protocol ImageProviderProtocol {
-    func load(_ url: URL, for identifier: String, with completion: @escaping (Result<URL>) -> ())
-    func suspendLoading()
-    func resumeLoading()
-}
-
-extension ImageProvider: ImageProviderProtocol {}
 
 // MARK: - User Defaults Extension
 extension UserDefaults {
